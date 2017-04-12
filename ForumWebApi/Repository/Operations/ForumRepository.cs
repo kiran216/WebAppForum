@@ -50,13 +50,7 @@ namespace WebApiForum.Repository.Operations
                     Parameter = DbConstants.CategoryName,
                     ParameterValue = forum.CategoryName,
                     Direction = ParameterDirection.Input
-                },               
-                 new SqlParameterHolder()
-                {
-                    Parameter = DbConstants.ForumId,
-                    ParameterValue = forum.ForumId,
-                    Direction = ParameterDirection.Input
-                },
+                },  
                  new SqlParameterHolder()
                 {
                     Parameter = DbConstants.ForumId,
