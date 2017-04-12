@@ -1,5 +1,5 @@
-﻿app.controller("category", ['$scope', 'categoryService',
-function category($scope, categoryService) {
+﻿app.controller("category", ['$scope', 'categoryService','commonService',
+function category($scope, categoryService,commonService) {
     debugger;
     $scope.status;
     $scope.CategoriesList;
@@ -25,14 +25,14 @@ function category($scope, categoryService) {
 
     //Open Add Category Form
     $scope.openAddCategoryForm = function () {
-        categoryService.showAddCategoryForm('add-edit-main');
+        commonService.showAddForm('add-edit-main');
         $scope.currentCategoryDetails = {};
     };
     //Populate the data of Selected Category
     $scope.openUpdateCategoryForm = function () {
         $scope.currentCategoryDetails = {};
         $scope.currentCategoryDetails = $scope.mySelections[0]; //selected row data        
-        categoryService.showEditCategoryForm('add-edit-main');
+        commonService.showEditForm('add-edit-main');
     };
     $scope.insertCategory = function () {
         categoryService.insertOrUpdateCategory($scope.currentCategoryDetails).then(function (response) {
@@ -42,7 +42,7 @@ function category($scope, categoryService) {
         });
     }
     $scope.resetPage = function () {
-        categoryService.resetPage('add-edit-main');
+        commonService.resetPage('add-edit-main');
         categoryService.getcategories()
        .then(function (response) {
            $scope.CategoriesList = response.data;

@@ -1,5 +1,5 @@
-﻿app.controller("forum", ['$scope', 'forumService','categoryService',
-function category($scope, forumService,categoryService) {
+﻿app.controller("forum", ['$scope', 'forumService', 'categoryService', 'commonService',
+function category($scope, forumService,categoryService,commonService) {
     debugger;
     $scope.status;
     $scope.CategoriesList;
@@ -32,7 +32,7 @@ function category($scope, forumService,categoryService) {
 
     
     $scope.resetPage = function () {
-        forumService.resetPage('add-edit-main');
+        commonService.resetPage('add-edit-main');
         forumService.getForums()
         .then(function (response) {
             $scope.forumsList = response.data;
@@ -42,14 +42,14 @@ function category($scope, forumService,categoryService) {
     }
     //Open Add Category Form
     $scope.openAddForumForm = function () {
-        categoryService.showAddCategoryForm('add-edit-main');
+        commonService.showAddForm('add-edit-main');
         $scope.currentForumDetails = {};
     };
     //Populate the data of Selected Category
     $scope.openUpdateForumForm = function () {
         $scope.currentForumDetails = {};
         $scope.currentForumDetails = $scope.mySelections[0]; //selected row data        
-        categoryService.showEditCategoryForm('add-edit-main');
+        commonService.showEditForm('add-edit-main');
     };
     $scope.insertForum = function () {
         $scope.currentForumDetails.CategoryId = $scope.selectedOption.CategoryId;
