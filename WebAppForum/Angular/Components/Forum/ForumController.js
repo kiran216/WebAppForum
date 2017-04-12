@@ -34,11 +34,11 @@ function category($scope, forumService,categoryService) {
     $scope.resetPage = function () {
         forumService.resetPage('add-edit-main');
         forumService.getForums()
-       .then(function (response) {
-           $scope.ForumList = response.data;
-       }, function (error) {
-           $scope.status = 'Unable to load Category data: ' + error.message;
-       });
+        .then(function (response) {
+            $scope.forumsList = response.data;
+        }, function (error) {
+            $scope.status = 'Unable to load Category data: ' + error.message;
+        });
     }
     //Open Add Category Form
     $scope.openAddForumForm = function () {
@@ -55,6 +55,13 @@ function category($scope, forumService,categoryService) {
         $scope.currentForumDetails.CategoryId = $scope.selectedOption.CategoryId;
         $scope.currentForumDetails.CategoryName = $scope.selectedOption.CategoryName;
         forumService.insertOrUpdateForum($scope.currentForumDetails).then(function (response) {
+            $scope.resetPage();
+        }, function (error) {
+            $scope.status = 'Unable to load Category data: ' + error.message;
+        });
+    }
+    $scope.DeleteForum = function () {
+        forumService.deleteForum($scope.currentForumDetails.ForumId).then(function (response) {
             $scope.resetPage();
         }, function (error) {
             $scope.status = 'Unable to load Category data: ' + error.message;
