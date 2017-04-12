@@ -95,6 +95,7 @@
     <Content Include="Angular\Config.js" />
     <Content Include="Angular\Pages\Partial_CategoryListing.html" />
     <Content Include="Angular\Pages\Partial_Forum.html" />
+    <Content Include="Angular\Shared\CommonService.js" />
     <Content Include="Angular\Shared\Directives\CustomGridDirective.js" />
     <Content Include="Angular\Shared\Directives\NavbarDirective.js" />
     <Content Include="Content\bootstrap.css" />

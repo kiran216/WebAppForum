@@ -1,4 +1,4 @@
-﻿app.controller("category", ['$scope',  'categoryService', 
+﻿app.controller("category", ['$scope', 'categoryService',
 function category($scope, categoryService) {
     debugger;
     $scope.status;
@@ -8,47 +8,54 @@ function category($scope, categoryService) {
     $scope.gridOptions = {
         data: 'CategoriesList',
         selectedItems: $scope.mySelections,
+        afterSelectionChange: function () {
+            $scope.openUpdateCategoryForm();
+        },
+        enableSorting: true,
+        enableFilter: true,
         multiSelect: false
     };
-    $scope.init = function () {
-        $scope.getCategories();
-    }
-    $scope.getCategories = function () {
-        categoryService.getcategories()
-            .then(function (response) {
-                $scope.CategoriesList = response.data;
-            }, function (error) {
-                $scope.status = 'Unable to load Category data: ' + error.message;
-            });       
-    }
+
+    categoryService.getcategories()
+        .then(function (response) {
+            $scope.CategoriesList = response.data;
+        }, function (error) {
+            $scope.status = 'Unable to load Category data: ' + error.message;
+        });
+
     //Open Add Category Form
     $scope.openAddCategoryForm = function () {
         categoryService.showAddCategoryForm('add-edit-main');
-        $scope.counties = {};
         $scope.currentCategoryDetails = {};
-        $scope.$apply();
     };
     //Populate the data of Selected Category
-    $scope.openUpdateCategoryForm = function (e) {     
-        $scope.currentCategoryDetails = $scope.mySelections //selected row data
-        $scope.selectedCategoryId = $scope.currentCategoryDetails.CategoryId;       
-        categoryService.showEditCategoryForm('add-edit-main');        
-        $(".alert").hide();
-        $(".modal-header.alert.alert-success").show();
-        $scope.isEditCategory = true;
-        $scope.$apply();
-
-        $scope.assignCounty('divEditZipCode');
+    $scope.openUpdateCategoryForm = function () {
+        $scope.currentCategoryDetails = {};
+        $scope.currentCategoryDetails = $scope.mySelections[0]; //selected row data        
+        categoryService.showEditCategoryForm('add-edit-main');
     };
     $scope.insertCategory = function () {
-        categoryService.insertcategory($scope.currentCategoryDetails).then(function (response) {
-
+        categoryService.insertOrUpdateCategory($scope.currentCategoryDetails).then(function (response) {
+            $scope.resetPage();
         }, function (error) {
             $scope.status = 'Unable to load Category data: ' + error.message;
         });
     }
-    $scope.resetPage=function(){
+    $scope.resetPage = function () {
         categoryService.resetPage('add-edit-main');
+        categoryService.getcategories()
+       .then(function (response) {
+           $scope.CategoriesList = response.data;
+       }, function (error) {
+           $scope.status = 'Unable to load Category data: ' + error.message;
+       });
+    }
+    $scope.DeleteCategory = function () {
+        categoryService.deleteCategory($scope.currentCategoryDetails.CategoryId).then(function (response) {
+            $scope.resetPage();
+        }, function (error) {
+            $scope.status = 'Unable to load Category data: ' + error.message;
+        });
     }
 
 }]);

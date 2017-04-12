@@ -12,15 +12,10 @@ function categoryService($http, $q) {
         return $http.get(urlBase + '/' + id);
     };
 
-    this.insertcategory = function (cust) {
+    this.insertOrUpdateCategory = function (cust) {
         return $http.post(urlBase, cust);
     };
-
-    this.updatecategory = function (cust) {
-        return $http.put(urlBase + '/' + cust.ID, cust)
-    };
-
-    this.deletecategory = function (id) {
+    this.deleteCategory = function (id) {
         return $http.delete(urlBase + '/' + id);
     };
 
@@ -42,7 +37,7 @@ function categoryService($http, $q) {
     this.focusToTop= function () {
         $('html, body').animate({ scrollTop: 0 }, 800);
     };
-    this.resetPage = function () {
+    this.resetPage = function (elementId) {
         $(".add-content").slideUp("slow");
         $(".edit-content").slideUp("slow");
         $(".alert").hide();

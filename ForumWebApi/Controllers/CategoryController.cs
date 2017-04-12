@@ -30,5 +30,23 @@ namespace ForumWebApi.Controllers
             if (custs == null) throw new HttpResponseException(HttpStatusCode.NotFound);
             return custs;
         }
+
+        // GET api/Categories
+        // [Route("api/Categories/post")]
+        public bool post(Category category)
+        {
+            var custs = _Repository.InsertOrUpdateCategory(category);
+            return custs;
+        }
+        // GET api/Categories
+        // [Route("api/Categories/delete")]
+        public bool delete(int id)
+        {
+            var custs = _Repository.DeleteCategory(id);
+            return custs;
+        }
+
+
+
     }
 }

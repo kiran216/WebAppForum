@@ -9,7 +9,6 @@
 
         <div class="gridStyle" ng-grid="gridOptions">
         </div>
-        <!--<div class="selectedItems">{{mySelections}}</div>-->
     </div>
     <div class="add-edit-main" id="add-edit-main" style="display:none">
         <div class="add-content">
@@ -19,62 +18,7 @@
             <div class="panel panel-primary panel-form clearfix">
                 <div class="clearfix">
                     <p class="mandatory-fields"><span class="mandatory">*</span> - Indicates a required field</p>
-                    <form id="addCategoryForm" novalidate="novalidate" ng-submit="insertCategory()">
-                        <div class="col-sm-12">
-                            <div class="col-sm-12">
-                                <div class="row">
-
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label for="Categoryname">Category Name: <span class="mandatory">*</span></label>
-                                            <input name="txtNewCategoryName"
-                                                   id="txtNewCategoryName"
-                                                   type="text"
-                                                   class="form-control"
-                                                   ng-model="currentCategoryDetails.CategoryName"
-                                                   required
-                                                   maxlength="100"
-                                                   data-required-msg="Name is mandatory">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label for="CategoryDescription">Category Description: <span class="mandatory">*</span></label>
-                                            <textarea name="txtNewCategoryDescription"
-                                                   id="txtNewCategoryDescription"                                               
-                                                   class="form-control"
-                                                   ng-model="currentCategoryDetails.CategoryDescription"
-                                                   required                                                 
-                                                   data-required-msg="Description is mandatory"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 button-block clearfix">                           
-                            <button type="submit"
-                                    class="btn btn-primary pull-right" style="margin-left: 10px !important;">
-                                <span class="glyphicon glyphicon-floppy-disk"></span> Save
-                            </button>                           
-                            <button type="button"
-                                    class="btn btn-primary pull-right"
-                                    ng-click="resetPage()">
-                                <span class="glyphicon glyphicon-remove"></span> Cancel
-                            </button>
-                        </div>
-                    </form>
-                </div>
-
-            </div>
-        </div>
-        <!--<div class="edit-main">
-            <div class="page-header">
-                <h1>Edit Category</h1>
-            </div>
-            <div class="panel panel-primary panel-form clearfix">
-                <div class="clearfix">
-                    <p class="mandatory-fields"><span class="mandatory">*</span> - Indicates a required field</p>
-                    <form id="addCategoryForm" novalidate="novalidate" ng-submit="insertCategory()">
+                    <form id="addCategoryForm" novalidate="novalidate" ng-submit="insertCategory()" >
                         <div class="col-sm-12">
                             <div class="col-sm-12">
                                 <div class="row">
@@ -121,6 +65,66 @@
                 </div>
 
             </div>
-        </div>-->
+        </div>
+        <div class="edit-content">
+            <div class="page-header">
+                <h1>Edit Category</h1>
+            </div>
+            <div class="panel panel-primary panel-form clearfix">
+                <div class="clearfix">
+                    <p class="mandatory-fields"><span class="mandatory">*</span> - Indicates a required field</p>
+                    <form id="addCategoryForm" novalidate="novalidate" ng-submit="insertCategory()">
+                        <div class="col-sm-12">
+                            <div class="col-sm-12">
+                                <div class="row">
+
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="Categoryname">Category Name: <span class="mandatory">*</span></label>
+                                            <input name="txtNewCategoryName"
+                                                   id="txtNewCategoryName"
+                                                   type="text"
+                                                   class="form-control"
+                                                   ng-model="currentCategoryDetails.CategoryName"
+                                                   required
+                                                   maxlength="100"
+                                                   data-required-msg="Name is mandatory">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="CategoryDescription">Category Description: <span class="mandatory">*</span></label>
+                                            <textarea name="txtNewCategoryDescription"
+                                                      id="txtNewCategoryDescription"
+                                                      class="form-control"
+                                                      ng-model="currentCategoryDetails.CategoryDescription"
+                                                      required
+                                                      data-required-msg="Description is mandatory"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 button-block clearfix">
+                            <button type="button"
+                                    class="btn btn-primary pull-right" style="margin-left: 10px !important;"
+                                    ng-click="DeleteCategory()">
+                                <span class="glyphicon glyphicon-trash"></span> Delete
+                            </button>
+                            <button type="submit"
+                                    class="btn btn-primary pull-right" style="margin-left: 10px !important;">
+                                <span class="glyphicon glyphicon-floppy-disk"></span> Save
+                            </button>
+                            <button type="button"
+                                    class="btn btn-primary pull-right"
+                                    ng-click="resetPage()">
+                                <span class="glyphicon glyphicon-remove"></span> Cancel
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
     </div>
 </div>

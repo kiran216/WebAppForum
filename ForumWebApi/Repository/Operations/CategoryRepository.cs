@@ -22,7 +22,8 @@ namespace WebApiForum.Repository.Operations
                     {
                         CategoryDescription = data[DbConstants.CategoryDescription].ToString(),
                         CategoryId = Convert.ToInt32(data[DbConstants.CategoryId]),
-                        CategoryName = data[DbConstants.CategoryName].ToString()
+                        CategoryName = data[DbConstants.CategoryName].ToString(),
+                        NumberofForums = Convert.ToInt32(data[DbConstants.ForumCount])
                     });
                 }
             }
@@ -49,6 +50,7 @@ namespace WebApiForum.Repository.Operations
                     category.CategoryDescription = data[DbConstants.CategoryDescription].ToString();
                     category.CategoryId = Convert.ToInt32(data[DbConstants.CategoryId]);
                     category.CategoryName = data[DbConstants.CategoryName].ToString();
+                    category.NumberofForums = Convert.ToInt32(data[DbConstants.ForumCount]);
                 }
             }
             catch (Exception ex)
@@ -56,6 +58,58 @@ namespace WebApiForum.Repository.Operations
                 throw ex;
             }
             return category;
+        }
+        public bool InsertOrUpdateCategory(Category category)
+        {
+            bool result;
+            try
+            {
+                var dataSet = DataHelper.ExecuteCommand(DbConstants.SpInsertOrUpdateCategory, new SqlParameterHolder()
+                {
+                    Parameter = DbConstants.CategoryId,
+                    ParameterValue = category.CategoryId,
+                    Direction = ParameterDirection.Input
+                },
+                new SqlParameterHolder()
+                {
+                    Parameter = DbConstants.CategoryName,
+                    ParameterValue = category.CategoryName,
+                    Direction = ParameterDirection.Input
+                },
+                new SqlParameterHolder()
+                {
+                    Parameter = DbConstants.CategoryDescription,
+                    ParameterValue = category.CategoryDescription,
+                    Direction = ParameterDirection.Input
+                });
+                result = true;
+            }
+            catch (Exception ex)
+            {
+                 result =false;
+                throw ex;
+            }
+            return result;
+        }
+        public bool DeleteCategory(int id)
+        {
+            bool result;
+            try
+            {
+                var dataSet = DataHelper.ExecuteCommand(DbConstants.SpDeleteCategory, new SqlParameterHolder()
+                {
+                    Parameter = DbConstants.CategoryId,
+                    ParameterValue = id,
+                    Direction = ParameterDirection.Input
+                });
+                result = true;
+            }
+            catch (Exception ex)
+            {
+                result = false;
+                throw ex;
+            }
+            return result;
         }
 
     }

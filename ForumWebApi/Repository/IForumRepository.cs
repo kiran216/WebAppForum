@@ -9,7 +9,12 @@ namespace WebApiForum.Repository
 {
     public interface IForumRepository
     {
-        
+
+        List<Forum> GetForums();
+
+        bool InsertOrUpdateForum(Forum forum);
+
+        bool DeleteForum(int id);
     }
     public interface ICategoryRepository
     {
@@ -17,10 +22,8 @@ namespace WebApiForum.Repository
 
         Category GetCategory(int id);
 
-        //Category InsertCustomer(Category cust);
+        bool InsertOrUpdateCategory(Category cust);
 
-        //bool UpdateCustomer(Category category);
-
-        //bool DeleteCustomer(int id);
+        bool DeleteCategory(int id);
     }
 }

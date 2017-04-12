@@ -1,1 +1,148 @@
-﻿<h3>Hello 22</h3>
+﻿<div ng-controller="forum">
+    <div class="panel panel-primary clear clearfix">
+
+        <!--HEADER-STARTS------------->
+        <div class="panel-heading clearfix">
+            <h4 class="panel-title pull-left">Forum</h4>
+            <a class="btn btn-primary pull-right title-button" type="submit" href="javascript:void(0)" id="add-Forum" ng-click="openAddForumForm()"><span class="glyphicon glyphicon-plus-sign"></span>Add Forum</a>
+        </div>
+
+        <div class="gridStyle" ng-grid="gridOptions">
+        </div>
+    </div>
+    <div class="add-edit-main" id="add-edit-main" style="display:none">
+        <div class="add-content">
+            <div class="page-header">
+                <h1>Add Forum</h1>
+            </div>
+            <div class="panel panel-primary panel-form clearfix">
+                <div class="clearfix">
+                    <p class="mandatory-fields"><span class="mandatory">*</span> - Indicates a required field</p>
+                    <form id="addForum" novalidate="novalidate" ng-submit="insertForum()">
+                        <div class="col-sm-12">
+                            <div class="col-sm-12">
+                                <div class="row">
+
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="Categoryname">Category: <span class="mandatory">*</span></label>
+                                            <select class="form-control" required data-ng-options="o.CategoryName for o in CategoriesList" data-ng-model="selectedOption"></select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-8">
+                                        <div class="form-group">
+                                            <label for="Categoryname">Forum Subject: <span class="mandatory">*</span></label>
+                                            <input name="txtNewSubject"
+                                                   id="txtNewSubject"
+                                                   type="text"
+                                                   class="form-control"
+                                                   ng-model="currentForumDetails.Subject"
+                                                   required
+                                                   maxlength="500"
+                                                   data-required-msg="Subject is mandatory">
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label for="Description">Description:</label>
+                                                <textarea name="txtNewForumDescription"
+                                                          id="txtNewForumDescription"
+                                                          class="form-control"
+                                                          ng-model="currentForumDetails.Description"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                            </div>
+                        </div>
+                        <div class="col-sm-12 button-block clearfix">                           
+                            <button type="submit"
+                                    class="btn btn-primary pull-right" style="margin-left: 10px !important;">
+                                <span class="glyphicon glyphicon-floppy-disk"></span> Save
+                            </button>                           
+                            <button type="button"
+                                    class="btn btn-primary pull-right"
+                                    ng-click="resetPage()">
+                                <span class="glyphicon glyphicon-remove"></span> Cancel
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+        <div class="edit-content">
+            <div class="page-header">
+                <h1>Edit Forum</h1>
+            </div>
+            <div class="panel panel-primary panel-form clearfix">
+                <div class="clearfix">
+                    <p class="mandatory-fields"><span class="mandatory">*</span> - Indicates a required field</p>
+                    <form id="EditForum" novalidate="novalidate" ng-submit="insertForum()">
+                        <div class="col-sm-12">
+                            <div class="col-sm-12">
+                                <div class="row">
+
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label for="Categoryname">Category: <span class="mandatory">*</span></label>                                           
+                                            <select class="form-control" required data-ng-options="o.CategoryName for o in CategoriesList" data-ng-model="selectedOption"></select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-8">
+                                        <div class="form-group">
+                                            <label for="Categoryname">Forum Subject: <span class="mandatory">*</span></label>
+                                            <input name="txtNewSubject"
+                                                   id="txtNewSubject"
+                                                   type="text"
+                                                   class="form-control"
+                                                   ng-model="currentForumDetails.Subject"
+                                                   required
+                                                   maxlength="500"
+                                                   data-required-msg="Subject is mandatory">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label for="Description">Description:</label>
+                                            <textarea name="txtNewForumDescription"
+                                                      id="txtNewForumDescription"
+                                                      class="form-control"
+                                                      ng-model="currentForumDetails.Description"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-sm-12 button-block clearfix">
+                            <button type="button"
+                                    class="btn btn-primary pull-right" style="margin-left: 10px !important;"
+                                    ng-click="DeleteForum()">
+                                <span class="glyphicon glyphicon-trash"></span> Delete
+                            </button>
+                            <button type="submit"
+                                    class="btn btn-primary pull-right" style="margin-left: 10px !important;">
+                                <span class="glyphicon glyphicon-floppy-disk"></span> Save
+                            </button>
+                            <button type="button"
+                                    class="btn btn-primary pull-right"
+                                    ng-click="resetPage()">
+                                <span class="glyphicon glyphicon-remove"></span> Cancel
+                            </button>
+                            
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+</div>
