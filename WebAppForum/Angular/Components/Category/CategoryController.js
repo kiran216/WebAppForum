@@ -5,15 +5,32 @@ function category($scope, categoryService,commonService) {
     $scope.CategoriesList;
     $scope.mySelections = [];
     $scope.currentCategoryDetails = {};
+    // Set up initial paging options
+    $scope.pagingOptions = {
+        pageSizes: [10, 20, 50, 100],
+        pageSize: 10,
+        currentPage: 1
+    };
+
     $scope.gridOptions = {
         data: 'CategoriesList',
         selectedItems: $scope.mySelections,
+        columnDefs: [
+        { name: 'Category ID', field: 'CategoryId' },
+        { name: 'Category Name', field: 'CategoryName' },
+        { name: 'Category Description', field: 'CategoryDescription' },
+        { name: 'Number of Forums', field: 'NumberofForums' }
+        ],
         afterSelectionChange: function () {
             $scope.openUpdateCategoryForm();
         },
         enableSorting: true,
         enableFilter: true,
-        multiSelect: false
+        multiSelect: false,
+        enablePaging: true,
+        showFooter: true,       
+        pagingOptions: $scope.pagingOptions,
+        showFilter: true   
     };
 
     categoryService.getcategories()

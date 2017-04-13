@@ -22,6 +22,7 @@ namespace WebApiForum.Repository.Operations
                     {
                         ForumId = Convert.ToInt32(data[DbConstants.ForumId]),
                         CategoryName = data[DbConstants.CategoryName].ToString(),
+                        CategoryId =Convert.ToInt32(data[DbConstants.CategoryId]),
                         Description = data[DbConstants.ForumDescription].ToString(),
                         Subject = data[DbConstants.ForumSubject].ToString()
                     });
