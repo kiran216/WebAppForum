@@ -16,10 +16,10 @@ function category($scope, categoryService,commonService) {
         data: 'CategoriesList',
         selectedItems: $scope.mySelections,
         columnDefs: [
-        { name: 'Category ID', field: 'CategoryId' },
-        { name: 'Category Name', field: 'CategoryName' },
-        { name: 'Category Description', field: 'CategoryDescription' },
-        { name: 'Number of Forums', field: 'NumberofForums' }
+        { displayName: 'Category ID', field: 'CategoryId' },
+        { displayName: 'Category Name', field: 'CategoryName' },
+        { displayName: 'Category Description', field: 'CategoryDescription' },
+        { displayName: 'Number of Forums', field: 'NumberofForums' }
         ],
         afterSelectionChange: function () {
             $scope.openUpdateCategoryForm();

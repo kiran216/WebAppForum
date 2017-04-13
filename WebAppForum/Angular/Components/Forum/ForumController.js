@@ -11,10 +11,10 @@ function category($scope, forumService, categoryService, commonService) {
     $scope.gridOptions = {
         data: 'forumsList',
         columnDefs: [
-        { name: 'Forum ID', field: 'ForumId' },
-        { name: 'Subject', field: 'Subject' },
-        { name: 'Description', field: 'Description' },
-        { name: 'Category Name', field: 'CategoryName' }
+        { displayName: 'Forum ID', field: 'ForumId' },
+        { displayName: 'Subject', field: 'Subject' },
+        { displayName: 'Description', field: 'Description' },
+        { displayName: 'Category Name', field: 'CategoryName' }
         ],
         selectedItems: $scope.mySelections,
         afterSelectionChange: function () {
