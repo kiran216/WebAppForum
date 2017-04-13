@@ -3,7 +3,8 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+
+<a href="~/Views/Home/Index.cshtml"><h2>Index</h2></a>
 
 <!-- apply our angular app to our site -->
 <body ng-app="sampleApp">
@@ -18,10 +19,8 @@
 
     <!-- MAIN CONTENT -->
     <div class="container">
-
-        <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
-        <div ui-view></div>
-
+        <div main-content-directive></div>      
     </div>
-
+    <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
+    <div ui-view></div>
 </body>

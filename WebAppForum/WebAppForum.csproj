@@ -93,11 +93,12 @@
     <Content Include="Angular\Components\Forum\ForumController.js" />
     <Content Include="Angular\Components\Forum\ForumService.js" />
     <Content Include="Angular\Config.js" />
+    <Content Include="Angular\Pages\MainContent.html" />
     <Content Include="Angular\Pages\Partial_CategoryListing.html" />
     <Content Include="Angular\Pages\Partial_Forum.html" />
     <Content Include="Angular\Shared\CommonService.js" />
-    <Content Include="Angular\Shared\Directives\ValidationDirective.js" />
-    <Content Include="Angular\Shared\Directives\NavbarDirective.js" />
+    <Content Include="Angular\Shared\Directives\CustomTextAreaDirective.js" />
+    <Content Include="Angular\Shared\Directives\MainContentDirective.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\CustomStyle.css" />
